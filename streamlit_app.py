@@ -34,7 +34,7 @@ if "date" not in st.session_state:
     update_first_number()
 
 
-df = pd.read_csv('data/{}.csv'.format(st.session_state.date), skipfooter=1, skiprows=16,
+df = pd.read_csv('./data/{}.csv'.format(st.session_state.date), skipfooter=1, skiprows=16,
                  parse_dates=True, usecols=['Date', 'P_Avg[W]'])
 
 df['Date'] = pd.to_datetime(df['Date'])
