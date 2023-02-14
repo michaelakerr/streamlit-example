@@ -50,7 +50,7 @@ if "date" not in st.session_state:
 # Usage Data
 
 
-def usage_data(date):
+def usage_data():
     df = pd.read_csv('./data/{}.CSV'.format(st.session_state.file_date), skipfooter=1, skiprows=16,
                      parse_dates=True, usecols=['Date', 'P_Avg[W]'])
 
@@ -77,7 +77,7 @@ def getSolarFileNumber(date):
 
 
 def solar_data(date):
-    df = usage_data(date)
+    df = usage_data()
     solar = getSolarFileNumber(date)
     dfsolar = pd.read_csv('./solardata/{}.CSV'.format(solar),
                           parse_dates=True, usecols=['Date', ' data'])
@@ -102,30 +102,33 @@ def solar_data(date):
     update_number(selectedDate)
     return overall_df
 
-
 # APP
-st.title('Chia Solar Monitoring App', anchor=None)
-st.subheader('Usage for {}'.format(st.session_state.date))
 
 
-st.session_state.date = st.date_input(
-    'Selected Date', st.session_state.date, key="date_input")
+def runApp():
+    update_number(st.session_state.date_input)
+    datea = solar_data(st.session_state.date_input)
+    st.line_chart(datea[['Date', 'P_Avg[W]', ' data',
+                        TOTAL_ENERGY_USAGE]], x='Date')
+    col1, col2, col3 = st.columns(3)
+    col1Metric = round((datea[TOTAL_ENERGY_USAGE].sum()/1000)*(5/60), 2)
+    col2Metric = round(((datea[' data'].sum())*(5/60))/1000, 2)
+    col3Metric = round(col2Metric / col1Metric * 100, 2)
+    col1.metric(label="kWh Usage",
+                value=col1Metric, delta="")
+    col2.metric(label="Solar kWh Generation",
+                value=col2Metric, delta="")
+    col3.metric(label="% Solar",
+                value=col3Metric, delta="")
 
-update_number(st.session_state.date_input)
 
-datea = solar_data(st.session_state.date)
-st.line_chart(datea[['Date', 'P_Avg[W]', ' data',
-              TOTAL_ENERGY_USAGE]], x='Date')
-col1, col2, col3 = st.columns(3)
+def runChartLoader():
+    st.title('Chia Solar Monitoring App', anchor=None)
+    st.subheader('Usage for {}'.format(st.session_state.date_input))
+    placeholder = st.empty()
+    with placeholder.container():
+        runApp()
 
-col1Metric = round((datea[TOTAL_ENERGY_USAGE].sum()/1000)*(5/60), 2)
-col2Metric = round(((datea[' data'].sum())*(5/60))/1000, 2)
-col3Metric = round(col2Metric / col1Metric * 100, 2)
-col1.metric(label="kWh Usage",
-            value=col1Metric, delta="")
 
-col2.metric(label="Solar kWh Generation",
-            value=col2Metric, delta="")
-
-col3.metric(label="% Solar",
-            value=col3Metric, delta="")
+st.date_input(
+    'Selected Date', st.session_state.date, key="date_input", on_change=runChartLoader)
