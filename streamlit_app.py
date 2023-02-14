@@ -80,7 +80,7 @@ def getSolarFileNumber(date):
 def solar_data(date):
     df = usage_data()
     solar = getSolarFileNumber(date)
-    dfsolar = pd.read_csv('./solardata/{}.CSV'.format(solar),
+    dfsolar = pd.read_csv('./solardata/{}.csv'.format(solar),
                           parse_dates=True, usecols=['Date', ' data'])
     dfsolar['Date'] = pd.to_datetime(dfsolar['Date'], unit='ms', utc=True)
     dfsolar['Date'] = dfsolar['Date'].dt.tz_convert('Pacific/Auckland')

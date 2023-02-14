@@ -54,7 +54,7 @@ def energy_usage_data(date):
 
 def solar_gen_data(date):
     filename = get_solar_filename(date)
-    dfsolar = pd.read_csv('./solardata/{}.CSV'.format(filename),
+    dfsolar = pd.read_csv('./solardata/{}.csv'.format(filename),
                           parse_dates=True, usecols=['Date', ' data'])
 
     dfsolar['Date'] = pd.to_datetime(dfsolar['Date'], unit='ms', utc=True)
