@@ -55,6 +55,7 @@ def usage_data():
                      parse_dates=True, usecols=['Date', 'P_Avg[W]'])
 
     df['Date'] = pd.to_datetime(df['Date'])
+    st.write(df)
     return df
 
 
