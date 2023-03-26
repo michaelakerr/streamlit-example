@@ -1,1 +1,20 @@
+HTTP/1.1 400 Bad Request
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+Referrer-Policy: origin-when-cross-origin
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 1; mode=block
+Content-Security-Policy: default-src 'self'
+X-Forwarded-For: 10.64.160.65
+X-Rate-Limit-Limit: 1h
+X-Rate-Limit-Remaining: 29995
+X-Rate-Limit-Reset: 2023-03-26T09:00:00.0000000Z
+X-Powered-By: ASP.NET
+Date: Sun, 26 Mar 2023 08:31:14 GMT
+Content-Length: 72
+Set-Cookie: lbc=!J3ujbtGnkkD9SWOebLrGiH4EM+a4Dq630cEdE4/9dmO1y/PyQldS64LiKAk4NzOJJgejsC5Kce6Cm5vPleMCgTlDI0yfAwPZstGn6KDBnNk=; path=/; Httponly; Secure
+Vary: Accept-Encoding
+
 {"responseError":1005,"responseMessage":"Invalid date and time format."}
