@@ -1,5 +1,4 @@
-HTTP/1.1 400 Bad Request
-Content-Length: 72
+HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Server: Microsoft-IIS/10.0
 Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
@@ -10,11 +9,12 @@ X-Xss-Protection: 1; mode=block
 Content-Security-Policy: default-src 'self'
 X-Forwarded-For: 10.64.160.65
 X-Rate-Limit-Limit: 1h
-X-Rate-Limit-Remaining: 29999
-X-Rate-Limit-Reset: 2023-03-27T11:00:00.0000000Z
+X-Rate-Limit-Remaining: 29997
+X-Rate-Limit-Reset: 2023-03-27T21:00:00.0000000Z
 X-Powered-By: ASP.NET
-Date: Mon, 27 Mar 2023 10:00:02 GMT
-Set-Cookie: lbc=!Q8Z4LyP/G4j+zuqebLrGiH4EM+a4DluC7cvXY+c3cvNlAz1mjtckABduYRz5fjasTbVA8KyliAT5i0hp0aXvLZolsukaht47bMcUMZzcJFI=; path=/; Httponly; Secure
+Date: Mon, 27 Mar 2023 20:51:05 GMT
+Content-Length: 867
+Set-Cookie: lbc=!ObYnTUuMEDXrinOebLrGiH4EM+a4DgDIP5txbPNy0VdQBhDuvBcMcTQ5ZQZbDr5EAVBL6kJYCnu6SBGC2mFE06sai4tp3KVuYhSyPqKY/W8=; path=/; Httponly; Secure
 Vary: Accept-Encoding
 
-{"responseError":1005,"responseMessage":"Invalid date and time format."}
+{"pvSystemId":"97473c68-3827-41de-a8d5-ed549b8d8b89","deviceId":"59a1c401-cb13-4db4-9a72-ae45001de689","data":[],"links":{"first":"https://api.solarweb.com/swqapi/pvsystems/97473c68-3827-41de-a8d5-ed549b8d8b89/devices/59a1c401-cb13-4db4-9a72-ae45001de689/histdata?from=2023-03-28T00:00:00Z&to=2023-03-28T23:59:59Z&channel=EnergyExported&offset=0&limit=50","prev":null,"self":"https://api.solarweb.com/swqapi/pvsystems/97473c68-3827-41de-a8d5-ed549b8d8b89/devices/59a1c401-cb13-4db4-9a72-ae45001de689/histdata?from=2023-03-28T00:00:00Z&to=2023-03-28T23:59:59Z&channel=EnergyExported&offset=0&limit=50","next":null,"last":"https://api.solarweb.com/swqapi/pvsystems/97473c68-3827-41de-a8d5-ed549b8d8b89/devices/59a1c401-cb13-4db4-9a72-ae45001de689/histdata?from=2023-03-28T00:00:00Z&to=2023-03-28T23:59:59Z&channel=EnergyExported&offset=0&limit=50","totalItemsCount":0}}
