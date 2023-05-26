@@ -110,16 +110,21 @@ def runApp():
     datea = solar_data(st.session_state.date_input)
     st.line_chart(datea[['Date', 'P_Avg[W]', ' data',
                         TOTAL_ENERGY_USAGE]], x='Date')
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     col1Metric = round((datea[TOTAL_ENERGY_USAGE].sum()/1000)*(5/60), 2)
     col2Metric = round(((datea[' data'].sum())*(5/60))/1000, 2)
     col3Metric = round(col2Metric / col1Metric * 100, 2)
+    col4Metric = round((col1Metric * 0.2899) - (col2Metric * 0.12), 2)
     col1.metric(label="kWh Usage",
                 value=col1Metric, delta="")
     col2.metric(label="Solar kWh Generation",
                 value=col2Metric, delta="")
     col3.metric(label="% Solar",
                 value=col3Metric, delta="")
+    col4.metric(label="Total Cost kwH: 28.99c",
+                value=('$' + str(col4Metric)))
+    col4.write("Cost: 28.99c")
+    col4.write("Solar: 12c")
 
 
 def runChartLoader():
