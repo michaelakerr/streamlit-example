@@ -97,7 +97,7 @@ def update_chart_CSV(dataframe):
     col1Metric = round((overall_df[TOTAL_ENERGY_USAGE].sum()/1000)*(5/60), 2)
     col2Metric = round(((overall_df[' data'].sum())*(5/60))/1000, 2)
     col3Metric = round(col2Metric / col1Metric * 100, 2)
-    col4Metric = round((col1Metric * 0.2899) - (col2Metric * 0.12), 2)
+    col4Metric = round(((col1Metric - col2Metric) * 0.2899), 2)
     col1.metric(label="kWh Usage",
                 value=col1Metric, delta="")
     col2.metric(label="Solar kWh Generation",
